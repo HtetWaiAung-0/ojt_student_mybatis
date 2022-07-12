@@ -27,4 +27,10 @@ public interface UserMapper {
     @Select("SELECT EXISTS(SELECT 1 FROM user WHERE userMail={userMail},userPassword={userPassword})")
     boolean existsByEmailAndPassword(String userMail,String userPassword);
 
+    @Select("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'yoyo' AND TABLE_NAME = 'course';")
+    @Results(value = { @Result(property = "id", column = "AUTO_INCREMENT")})
+    int getId();
+
+    @Select("select * from user where userMail=? AND userpassword=?")
+    List<User> findByUserIdOrUserMail(String userId,String userMail);
 }

@@ -4,7 +4,7 @@ public class User {
     private int id;
     private String userId;
     private String userMail;
-    private String password;
+    private String userPassword;
     private String userRole;
     
     public int getId() {
@@ -25,11 +25,11 @@ public class User {
     public void setUserMail(String userMail) {
         this.userMail = userMail;
     }
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
     public String getUserRole() {
         return userRole;
