@@ -37,11 +37,11 @@ public class UserController {
         }
         else{
             model.addAttribute("error","Please check userMail or userPassword");
-            return "LNG001";
+            return "LGN001";
         }
     }
 
-    @GetMapping(value="/logout")
+    @GetMapping(value="/logOut")
     public String logout(HttpSession session) {
         session.removeAttribute("loginMail");
         session.removeAttribute("loginPassword");
@@ -52,7 +52,7 @@ public class UserController {
 
     @GetMapping(value="/")
     public String loginPage() {
-        return "LNG001";
+        return "LGN001";
     }
     
     @GetMapping(value="/addUserPage")
@@ -75,8 +75,8 @@ public class UserController {
 			model.addAttribute("errorFill", "Fill the Blank!!!");
 			return "USR001";
 		} else {
-			int i = userMapper.getId();
-			String stuIdString = String.format("%03d", i);
+			User i = userMapper.getId();
+			String stuIdString = String.format("%03d", i.getId());
 			String finalString = "USR" + stuIdString;
 			userBean.setUserId(finalString);
 			userMapper.saveUser(userBean);
@@ -106,6 +106,8 @@ public class UserController {
 			model.addAttribute("userList", showList);
 			return "USR003";
 		} else {
+			searchId = searchId.isBlank() ? "#$*@" : searchId ;
+			searchMail = searchMail.isBlank() ? "#$*@" : "%"+searchMail+"%";
 			showList = userMapper.findByUserIdOrUserMail(searchId, searchMail);
 			model.addAttribute("userList", showList);
 			return "USR003";
@@ -120,7 +122,7 @@ public class UserController {
 			model.addAttribute("errorFill", "Fill the Blank!!!");
 			return "USR002";
 		} else {
-			userMapper.saveUser(userBean);
+			userMapper.updateUser(userBean);
 			model.addAttribute("errorFill", "Success Register!");
 			return "redirect:/searchUserPage";
 		}
