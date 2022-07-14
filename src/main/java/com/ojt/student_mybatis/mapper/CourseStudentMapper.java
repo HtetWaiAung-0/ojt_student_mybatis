@@ -20,6 +20,11 @@ public interface CourseStudentMapper {
     @Delete("delete from course_student where stuId=#{stuId}")
     void deleteCourseStudent(String stuId);
 
-    @Select("select courseId form course_student where stuId=#{stuId}")
+    @Select("select courseName from mybatis.course JOIN mybatis.course_student ON course_student.courseId=course.courseId where course_student.stuId = #{stuId}")
     List<String> findByStuId(String stuId);
+
+    @Select("select course_student.courseId from mybatis.course JOIN mybatis.course_student ON course_student.courseId=course.courseId where course_student.stuId = #{stuId}")
+    List<String> findByStuIdForCourseId(String stuId);
+
+
 }

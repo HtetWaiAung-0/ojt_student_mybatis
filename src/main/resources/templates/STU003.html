@@ -98,7 +98,7 @@
                 <td th:text="${data.stuId}" />
                 <td th:text="${data.stuName}" />
                 <td>
-                  <span th:each="cou: ${data.stuCourse}" th:text="${cou.courseName}+','"></span>
+                  <span th:each="cou: ${data.stuCourseId}" th:text="${cou}+','"></span>
                 </td>
                 <td>
                   <a th:href="@{/updateStuPage(id=${data.id},stuId=${data.stuId})}"><button type="button"

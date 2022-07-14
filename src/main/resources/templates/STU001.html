@@ -127,7 +127,7 @@
                             <div class="form-check-inline " style="width: 200px;" th:each="c: ${courseList}">
                                
 
-                                <input type="checkbox" class="form-check-input" th:field="*{stuCourse}" th:value="${c.id}" id="gridRadios1" />
+                                <input type="checkbox" class="form-check-input" th:field="*{stuCourseId}" th:value="${c.courseId}" id="gridRadios1" />
                                 <label class="form-check-label" for="gridRadios1" th:text="${c.courseName}"></label>
                             </div>
                             </div>

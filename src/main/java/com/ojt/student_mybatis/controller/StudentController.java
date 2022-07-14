@@ -62,8 +62,9 @@ public class StudentController {
 			return "STU001";
 		} else {
             
-            CourseStudent courseStudent = new CourseStudent();
             for(String courseId : stuCourseId ) {
+				
+				CourseStudent courseStudent = new CourseStudent();
                 courseStudent.setStuId(stuBean.getStuId());
                 courseStudent.setCourseId(courseId);
                 courseStudentMapper.saveCourseStudent(courseStudent);
@@ -99,10 +100,15 @@ public class StudentController {
 	public ModelAndView updateStuPage(@RequestParam("id") int id,@RequestParam("stuId")String stuId, ModelMap model) {
 
 		List<Student> res = studentMapper.findByStuId(stuId);
+
 		
 		model.addAttribute("courseList", courseMapper.findAllCourse());
 		model.addAttribute("stu", res);
-		return new ModelAndView("STU002", "stuBean",  studentMapper.findById(id));
+		Student student = studentMapper.findById(id);
+		
+			student.setStuCourseId( courseStudentMapper.findByStuIdForCourseId(stuId));
+		
+		return new ModelAndView("STU002", "stuBean", student );
 	}
 
 	@RequestMapping(value = "/deleteStu", method = RequestMethod.GET)

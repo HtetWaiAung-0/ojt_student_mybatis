@@ -20,7 +20,7 @@ public interface StudentMapper {
     void deleteStu(int id);
 
     @Select("select * from student where id=#{id}")
-    List<Student> findById(int id);
+    Student findById(int id);
 
     @Select("select * from student where stuId=#{stuId}")
     List<Student> findByStuId(String stuId);
