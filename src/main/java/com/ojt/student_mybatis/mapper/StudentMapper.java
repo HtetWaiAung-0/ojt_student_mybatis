@@ -29,7 +29,7 @@ public interface StudentMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void saveStu(Student student);
 
-    @Select("SELECT distinct student.stuId,student.stuName FROM mybatis.student right JOIN mybatis.course_student ON student.stuId=course_student.stuId where student.stuId=#{stuId} OR student.stuName Like #{stuName} OR course_student.courseName Like #{courseName}")
+    @Select("SELECT distinct student.stuId,student.stuName FROM mybatis.student right JOIN mybatis.course_student ON student.stuId=course_student.stuId right JOIN course ON course_student.courseId=course.courseId where student.stuId=#{stuId} OR student.stuName Like #{stuName} OR course.courseName Like #{courseName}")
     List<Student> searchStu(String stuId,String stuName,String courseName);
 
     @Select("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'mybatis' AND TABLE_NAME = 'student'")

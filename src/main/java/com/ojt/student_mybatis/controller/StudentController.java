@@ -126,6 +126,7 @@ public class StudentController {
             List<String> clist = courseStudentMapper.findByStuId(student.getStuId());
             student.setStuCourseId(clist);   
         }
+		System.out.println(list);
 		model.addAttribute("stuList", list);
 		return "STU003";
 	}

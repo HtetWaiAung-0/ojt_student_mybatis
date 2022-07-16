@@ -60,5 +60,11 @@ public class Student {
     public void setStuCourseId(List<String> stuCourseId) {
         this.stuCourseId = stuCourseId;
     }
+    @Override
+    public String toString() {
+        return "Student [id=" + id + ", stuCourseId=" + stuCourseId + ", stuDob=" + stuDob + ", stuEducation="
+                + stuEducation + ", stuGender=" + stuGender + ", stuId=" + stuId + ", stuName=" + stuName
+                + ", stuPhone=" + stuPhone + "]";
+    }
     
 }
